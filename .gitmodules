@@ -1,0 +1,3 @@
+[submodule "trojan"]
+	path = trojan
+	url = git@github.com:TralahM/trojan
