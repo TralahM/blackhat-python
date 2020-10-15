@@ -1,35 +1,38 @@
 
 [![Build Status](https://travis-ci.com/TralahM/blackhat-python.svg?branch=master)](https://travis-ci.com/TralahM/blackhat-python)
-[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Build status](https://ci.appveyor.com/api/projects/status/yvvmq5hyf7hj743a/branch/master?svg=true)](https://ci.appveyor.com/project/TralahM/blackhat-python/branch/master)
+[![Documentation Status](https://readthedocs.org/projects/blackhat-python/badge/?version=latest)](https://blackhat-python.readthedocs.io/en/latest/?badge=latest)
+[![License: GPLv3](https://img.shields.io/badge/License-GPLV2-green.svg)](https://opensource.org/licenses/GPLV2)
 [![Organization](https://img.shields.io/badge/Org-TralahTek-blue.svg)](https://github.com/TralahTek)
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![HitCount](http://hits.dwyl.io/TralahM/blackhat-python.svg)](http://dwyl.io/TralahM/blackhat-python)
-[![Inline Docs](http://inch-ci.org/github/TralahM/blackhat-python.svg?branch=master)](http://inch-ci.org/github/TralahM/blackhat-python)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/TralahM/pull/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/Naereen/StrapDown.js.svg)](https://gitHub.com/TralahM/blackhat-python/pull/)
-[![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/TralahM/blackhat-python).
+[![Views](http://hits.dwyl.io/TralahM/blackhat-python.svg)](http://dwyl.io/TralahM/blackhat-python)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square)](https://github.com/TralahM/blackhat-python/pull/)
+[![GitHub pull-requests](https://img.shields.io/badge/Issues-pr-red.svg?style=flat-square)](https://github.com/TralahM/blackhat-python/pull/)
+[![Language](https://img.shields.io/badge/Language-python-3572A5.svg)](https://github.com/TralahM)
+<img title="Watching" src="https://img.shields.io/github/watchers/TralahM/blackhat-python?label=Watchers&color=blue&style=flat-square">
+<img title="Stars" src="https://img.shields.io/github/stars/TralahM/blackhat-python?color=red&style=flat-square">
+<img title="Forks" src="https://img.shields.io/github/forks/TralahM/blackhat-python?color=green&style=flat-square">
 
 # blackhat-python.
 
-# Description
 
-[![TralahM](https://img.shields.io/badge/Engineer-TralahM-blue.svg?style=for-the-badge)](https://github.com/TralahM)
-[![TralahM](https://img.shields.io/badge/Maintainer-TralahM-green.svg?style=for-the-badge)](https://github.com/TralahM)
+[![TralahTek](https://img.shields.io/badge/Organization-TralahTek-black.svg?style=for-the-badge&logo=github)](https://github.com/TralahTek)
+[![TralahM](https://img.shields.io/badge/Engineer-TralahM-blue.svg?style=for-the-badge&logo=github)](https://github.com/TralahM)
+[![TralahM](https://img.shields.io/badge/Maintainer-TralahM-green.svg?style=for-the-badge&logo=github)](https://github.com/TralahM)
 
 # Documentation
 
-[Read the Docs](https://blackhat-python.readthedocs.io)
-# Dependencies
+[![Documentation](https://img.shields.io/badge/Docs-blackhat-python-blue.svg?style=for-the-badge)](https://github.com/TralahM/blackhat-python)
 
 # How to Install
-
+```bash
+# In terminal do:
+```
 
 ## Building from Source for Developers
 
-```Bash
-git clone https://github.com/TralahM/blackhat-python.git
-cd blackhat-python
+```console
+$ git clone https://github.com/TralahM/blackhat-python.git
+$ cd blackhat-python
 ```
 
 # Contributing
@@ -46,6 +49,16 @@ cd blackhat-python
 [Read the license here](LICENSE)
 
 
-# Acknowledgements
+# Self-Promotion
+
+[![](https://img.shields.io/badge/Github-TralahM-green?style=for-the-badge&logo=github)](https://github.com/TralahM)
+[![](https://img.shields.io/badge/Twitter-%40tralahtek-red?style=for-the-badge&logo=twitter)](https://twitter.com/TralahM)
+[![TralahM](https://img.shields.io/badge/Kaggle-TralahM-purple.svg?style=for-the-badge&logo=kaggle)](https://kaggle.com/TralahM)
+[![TralahM](https://img.shields.io/badge/LinkedIn-TralahM-red.svg?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/TralahM)
+
+
+[![Blog](https://img.shields.io/badge/Blog-tralahm.tralahtek.com-blue.svg?style=for-the-badge&logo=rss)](https://tralahm.tralahtek.com)
+
+[![TralahTek](https://img.shields.io/badge/Organization-TralahTek-cyan.svg?style=for-the-badge)](https://org.tralahtek.com)
 
 
