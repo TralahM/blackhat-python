@@ -120,3 +120,4 @@ _site
 # nohup.out files
 *.out
 stime
+*.pcap
