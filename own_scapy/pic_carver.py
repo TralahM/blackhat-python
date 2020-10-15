@@ -12,6 +12,7 @@ pcap_file = "arper.pcap"
 
 def get_http_headers(http_payload):
     try:
+        # print(http_payload)
         # split headers if it is http traffic
         headers_raw = http_payload[: http_payload.index("\r\n\r\n") + 2]
         # break out the headers
@@ -71,11 +72,15 @@ def http_assembler(pcap_file):
     for session in sessions:
         http_payload = ""
         for packet in sessions[session]:
+            print()
+            print(packet)
+            print()
             try:
                 if packet[TCP].dport == 80 or packet[TCP].sport == 80:
                     # reassemble the stream
                     http_payload += str(packet[TCP].payload)
-            except Exception:
+            except Exception as r:
+                # print(r)
                 pass
         headers = get_http_headers(http_payload)
         if headers is None:
